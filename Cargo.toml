@@ -15,7 +15,7 @@ name="desktop"
 
 
 [dependencies]
-shura = { path="../shura" }
+shura = "0.2.0"
 
 [workspace]
 members = ["run-wasm"]
