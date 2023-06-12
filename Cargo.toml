@@ -1,6 +1,6 @@
 [package]
 name = "shura_template"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2021"
 
 # Android
@@ -15,7 +15,7 @@ name="desktop"
 
 
 [dependencies]
-shura = "0.2.0"
+shura = { path = "../shura" }
 
 [workspace]
 members = ["run-wasm"]
