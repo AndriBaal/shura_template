@@ -15,7 +15,7 @@ name="desktop"
 
 
 [dependencies]
-shura = { path = "../shura" }
+shura = "0.3"
 
 [workspace]
 members = ["run-wasm"]
@@ -29,8 +29,7 @@ label = "Shura Template"
 theme = "@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"
 
 [package.metadata.android.application.activity]
-# orientation = "landscape"
-resizeable_activity = true
+orientation = "landscape"
 
 [package.metadata.android.signing.release]
 path = "./key.keystore"
