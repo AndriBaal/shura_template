@@ -1,6 +1,6 @@
 [package]
 name = "shura_template"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2021"
 
 # Android
@@ -15,7 +15,7 @@ name="desktop"
 
 
 [dependencies]
-shura = "0.2.0"
+shura = "0.3"
 
 [workspace]
 members = ["run-wasm"]
@@ -29,8 +29,7 @@ label = "Shura Template"
 theme = "@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"
 
 [package.metadata.android.application.activity]
-# orientation = "landscape"
-resizeable_activity = true
+orientation = "landscape"
 
 [package.metadata.android.signing.release]
 path = "./key.keystore"
