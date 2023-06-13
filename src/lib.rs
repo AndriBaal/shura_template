@@ -33,7 +33,6 @@ struct DummyResources {
     // Sprite to render
     sprite: Sprite,
 }
-impl SceneStateController for DummyResources {}
 
 #[derive(Component)]
 // Define a component
@@ -61,6 +60,7 @@ impl ComponentController for DummyComponent {
         update: UpdateOperation::EveryFrame,
         ..ComponentConfig::DEFAULT
     };
+    
     fn update(ctx: &mut Context) {
         let frame_time = ctx.frame.frame_time();
 
@@ -71,6 +71,7 @@ impl ComponentController for DummyComponent {
             dummy.base.set_rotation(Rotation::new(new_rot));
         }
     }
+
     fn render(ctx: &Context, encoder: &mut RenderEncoder) {
         // Render each component with it's own Model but use the shared sprite from the state
         let state = ctx.scene_states.get::<DummyResources>();
