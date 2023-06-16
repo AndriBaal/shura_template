@@ -15,7 +15,7 @@ name="desktop"
 
 
 [dependencies]
-shura = "0.4"
+shura = "0.5"
 
 [workspace]
 members = ["run-wasm"]

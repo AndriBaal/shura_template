@@ -58,6 +58,8 @@ impl ComponentController for DummyComponent {
     const CONFIG: ComponentConfig = ComponentConfig {
         // call `update` every frame
         update: UpdateOperation::EveryFrame,
+        // Multiple of this component can be stored
+        storage: ComponentStorage::Multiple,
         ..ComponentConfig::DEFAULT
     };
     
@@ -65,17 +67,17 @@ impl ComponentController for DummyComponent {
         let frame_time = ctx.frame.frame_time();
 
         // Iterate over all active dummies
-        for dummy in ctx.components.iter_mut::<Self>() {
+        ctx.components.for_each_mut::<Self>(|dummy| {
             // or ctx.component_manager.active_mut(active)
             let new_rot = dummy.base.rotation().angle() + frame_time * -1.0;
             dummy.base.set_rotation(Rotation::new(new_rot));
-        }
+        });
     }
 
     fn render(ctx: &Context, encoder: &mut RenderEncoder) {
         // Render each component with it's own Model but use the shared sprite from the state
         let state = ctx.scene_states.get::<DummyResources>();
-        encoder.render_each::<Self>(ctx, RenderConfig::WORLD, |renderer, dummy, instance| {
+        ctx.components.render_each::<Self>(encoder, RenderConfig::WORLD, |renderer, dummy, instance| {
             renderer.render_sprite(instance, &dummy.model, &state.sprite)
         });
     }
